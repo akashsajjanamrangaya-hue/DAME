@@ -14,8 +14,13 @@
     <div class="card">
       <p><strong>Keyword entered:</strong> {{ keyword }}</p>
       <p>Access is limited while we verify your request.</p>
-      <button class="btn">Request Access</button>
+      <form class="search-form" onsubmit="return handleFakeSearch(event, 'generic')">
+        <input class="search" id="generic-search" type="text" placeholder="Search inside gateway" />
+        <button class="btn" type="submit">Request Access</button>
+      </form>
     </div>
+    <div class="search-results" id="generic-results"></div>
   </div>
+  <script src="{{ url_for('static', filename='fake_search.js') }}"></script>
 </body>
 </html>

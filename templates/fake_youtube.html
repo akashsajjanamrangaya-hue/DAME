@@ -9,8 +9,10 @@
 <body>
   <div class="fake-header youtube">
     <div class="logo">YouTube</div>
-    <input class="search" type="text" placeholder="Search" />
-    <button class="btn">Sign In</button>
+    <form class="search-form" onsubmit="return handleFakeSearch(event, 'youtube')">
+      <input class="search" id="youtube-search" type="text" placeholder="Search" />
+      <button class="btn" type="submit">Search</button>
+    </form>
   </div>
 
   <div class="fake-content">
@@ -29,6 +31,8 @@
         <p>Cyber Safety Basics</p>
       </div>
     </div>
+    <div class="search-results" id="youtube-results"></div>
   </div>
+  <script src="{{ url_for('static', filename='fake_search.js') }}"></script>
 </body>
 </html>

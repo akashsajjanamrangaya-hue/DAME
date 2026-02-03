@@ -5,7 +5,7 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 ## ✅ Features
 - Rule-based detection using a JSON dataset
 - Redirects to real websites for normal behavior
-- Fake (decoy) pages for abnormal behavior
+- Fake (decoy) pages for abnormal behavior with local-only search
 - Sticky abnormal session (once abnormal, always fake in that session)
 - Logs abnormal activities with timestamps
 
@@ -17,7 +17,8 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 ├── logs.txt
 ├── README.md
 ├── static/
-│   └── style.css
+│   ├── style.css
+│   └── fake_search.js
 └── templates/
     ├── index.html
     ├── fake_youtube.html
@@ -47,8 +48,9 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 ## 🗂️ File Explanation
 - **app.py**: Main Flask application with rule-based logic and session handling.
 - **dataset.json**: Contains allowed keywords, suspicious keywords, and behavior rules.
-- **templates/**: HTML pages (index and fake pages).
+- **templates/**: HTML pages (index and fake pages with local search).
 - **static/style.css**: Basic styling for the UI and fake pages.
+- **static/fake_search.js**: Local-only search behavior for fake pages (no external redirects).
 - **logs.txt**: Stores abnormal activity logs (keyword, timestamp, redirection type).
 
 ## ⚠️ Notes

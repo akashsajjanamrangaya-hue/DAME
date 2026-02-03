@@ -9,8 +9,10 @@
 <body>
   <div class="fake-header amazon">
     <div class="logo">amazon</div>
-    <input class="search" type="text" placeholder="Search Amazon.in" />
-    <button class="btn">Account &amp; Lists</button>
+    <form class="search-form" onsubmit="return handleFakeSearch(event, 'amazon')">
+      <input class="search" id="amazon-search" type="text" placeholder="Search Amazon.in" />
+      <button class="btn" type="submit">Search</button>
+    </form>
   </div>
 
   <div class="fake-content">
@@ -29,6 +31,8 @@
         <p>Study Desk Lamp</p>
       </div>
     </div>
+    <div class="search-results" id="amazon-results"></div>
   </div>
+  <script src="{{ url_for('static', filename='fake_search.js') }}"></script>
 </body>
 </html>
