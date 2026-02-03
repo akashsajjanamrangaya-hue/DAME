@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <title>Searchly</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fake_google.css') }}" />
 </head>
 <body class="google-page">
-  <div class="google-box">
-    <div class="google-logo">Google</div>
+  <div class="search-page">
+    <div class="brand">Searchly</div>
     <form class="search-form" onsubmit="return handleFakeSearch(event, 'google')">
-      <input class="google-search" id="google-search" type="text" placeholder="Search Google or type a URL" />
-      <div class="google-buttons">
-        <button type="submit">Google Search</button>
+      <input class="search-input" id="google-search" type="text" placeholder="Search the knowledge hub" />
+      <div class="button-row">
+        <button type="submit">Search</button>
         <button type="button" onclick="fillLucky('google-search')">I'm Feeling Lucky</button>
       </div>
     </form>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amazon.in</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <title>ShopSphere</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fake_amazon.css') }}" />
 </head>
 <body>
-  <div class="fake-header amazon">
-    <div class="logo">amazon</div>
+  <div class="fake-header">
+    <div class="logo">ShopSphere</div>
     <form class="search-form" onsubmit="return handleFakeSearch(event, 'amazon')">
-      <input class="search" id="amazon-search" type="text" placeholder="Search Amazon.in" />
+      <input class="search" id="amazon-search" type="text" placeholder="Search ShopSphere" />
       <button class="btn" type="submit">Search</button>
     </form>
   </div>

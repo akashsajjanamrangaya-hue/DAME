@@ -17,7 +17,11 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 ├── logs.txt
 ├── README.md
 ├── static/
-│   ├── style.css
+│   ├── index.css
+│   ├── fake_google.css
+│   ├── fake_youtube.css
+│   ├── fake_amazon.css
+│   ├── fake_generic.css
 │   └── fake_search.js
 └── templates/
     ├── index.html
@@ -49,7 +53,11 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 - **app.py**: Main Flask application with rule-based logic and session handling.
 - **dataset.json**: Contains allowed keywords, suspicious keywords, and behavior rules.
 - **templates/**: HTML pages (index and fake pages with local search).
-- **static/style.css**: Basic styling for the UI and fake pages.
+- **static/index.css**: Modern UI theme for the main index page.
+- **static/fake_google.css**: Fake search page theme.
+- **static/fake_youtube.css**: Fake video page theme.
+- **static/fake_amazon.css**: Fake store page theme.
+- **static/fake_generic.css**: Fake gateway theme for suspicious activity.
 - **static/fake_search.js**: Local-only search behavior for fake pages (no external redirects).
 - **logs.txt**: Stores abnormal activity logs (keyword, timestamp, redirection type).
 
