@@ -97,8 +97,6 @@ def real_site_redirect(keyword: str):
 def index():
     """Main page: input a keyword and get redirected based on behavior."""
     dataset = load_dataset()
-    message = None
-
     if request.method == "POST":
         keyword = request.form.get("keyword", "")
 
@@ -106,7 +104,7 @@ def index():
         if session.get("abnormal"):
             template = decide_fake_template(keyword)
             log_abnormal(keyword, "FAKE (sticky session)")
-            return render_template(template, keyword=keyword, message=message)
+            return render_template(template, keyword=keyword)
 
         is_normal, reason = is_input_normal(keyword, dataset)
 
@@ -118,10 +116,9 @@ def index():
         session["abnormal"] = True
         template = decide_fake_template(keyword)
         log_abnormal(keyword, "FAKE (abnormal)")
-        message = f"Detected abnormal behavior: {reason}"
-        return render_template(template, keyword=keyword, message=message)
+        return render_template(template, keyword=keyword)
 
-    return render_template("index.html", message=message)
+    return render_template("index.html")
 
 
 @app.route("/reset")
