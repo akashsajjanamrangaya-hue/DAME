@@ -1,0 +1,28 @@
+{
+  "allowed_keywords": [
+    "google",
+    "amazon",
+    "youtube"
+  ],
+  "suspicious_keywords": [
+    "admin",
+    "config",
+    "root",
+    "passwd",
+    "hack",
+    "phish"
+  ],
+  "behavior_rules": {
+    "min_length": 3,
+    "max_length": 30,
+    "allow_only_letters_numbers_spaces": true,
+    "block_if_contains_suspicious": true,
+    "forbidden_patterns": [
+      "/",
+      "?",
+      "..",
+      "\\\\",
+      "%"
+    ]
+  }
+}
