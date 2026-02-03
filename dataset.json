@@ -1,0 +1,25 @@
+{
+  "allowed_keywords": [
+    "google",
+    "youtube",
+    "amazon",
+    "wikipedia",
+    "github",
+    "stackoverflow"
+  ],
+  "suspicious_keywords": [
+    "hack",
+    "crack",
+    "phish",
+    "malware",
+    "admin",
+    "root",
+    "dump"
+  ],
+  "behavior_rules": {
+    "min_length": 3,
+    "max_length": 25,
+    "allow_only_letters_numbers_spaces": true,
+    "block_if_contains_suspicious": true
+  }
+}

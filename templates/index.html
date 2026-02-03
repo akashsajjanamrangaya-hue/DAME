@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behavior-Based Cyber Deception System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Behavior-Based Cyber Deception System</h1>
+    <p class="subtitle">Enter a website keyword to simulate behavior-based redirection.</p>
+
+    <form method="POST" class="card">
+      <label for="keyword">Website Keyword:</label>
+      <input type="text" id="keyword" name="keyword" placeholder="e.g., google" required />
+      <button type="submit">Check &amp; Redirect</button>
+    </form>
+
+    {% if message %}
+      <div class="notice">{{ message }}</div>
+    {% endif %}
+
+    <div class="info">
+      <h3>Try these normal keywords:</h3>
+      <ul>
+        <li>google</li>
+        <li>youtube</li>
+        <li>amazon</li>
+        <li>wikipedia</li>
+        <li>github</li>
+        <li>stackoverflow</li>
+      </ul>
+      <p class="hint">Tip: enter suspicious words like <strong>hack</strong> or <strong>phish</strong> to see deception pages.</p>
+      <p class="hint">Use <a href="/reset">reset</a> to clear the session.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon.in</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="fake-header amazon">
+    <div class="logo">amazon</div>
+    <input class="search" type="text" placeholder="Search Amazon.in" />
+    <button class="btn">Account &amp; Lists</button>
+  </div>
+
+  <div class="fake-content">
+    {% if message %}
+      <div class="notice">{{ message }}</div>
+    {% endif %}
+    <h2>Today's Deals</h2>
+    <div class="card-grid">
+      <div class="product-card">
+        <div class="thumb"></div>
+        <p>Wireless Headphones</p>
+      </div>
+      <div class="product-card">
+        <div class="thumb"></div>
+        <p>Gaming Mouse</p>
+      </div>
+      <div class="product-card">
+        <div class="thumb"></div>
+        <p>Study Desk Lamp</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
