@@ -1,0 +1,82 @@
+/* ===== Fake Store (ShopSphere) Theme ===== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f9;
+  color: #1f2933;
+}
+
+.fake-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.search {
+  flex: 1;
+  padding: 9px;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn {
+  background: #fbbf24;
+  color: #111827;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.fake-content {
+  padding: 24px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.product-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.thumb {
+  background: #e2e8f0;
+  height: 120px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.search-results {
+  margin-top: 20px;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.small-note {
+  font-size: 12px;
+  color: #6b7280;
+}
