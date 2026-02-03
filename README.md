@@ -21,14 +21,12 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 │   ├── fake_google.css
 │   ├── fake_youtube.css
 │   ├── fake_amazon.css
-│   ├── fake_generic.css
 │   └── fake_search.js
 └── templates/
     ├── index.html
-    ├── fake_youtube.html
     ├── fake_google.html
     ├── fake_amazon.html
-    └── fake_generic.html
+    └── fake_youtube.html
 ```
 
 ## ▶️ How to Run (Step-by-Step)
@@ -57,9 +55,22 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 - **static/fake_google.css**: Fake search page theme.
 - **static/fake_youtube.css**: Fake video page theme.
 - **static/fake_amazon.css**: Fake store page theme.
-- **static/fake_generic.css**: Fake gateway theme for suspicious activity.
 - **static/fake_search.js**: Local-only search behavior for fake pages (no external redirects).
 - **logs.txt**: Stores abnormal activity logs (keyword, timestamp, redirection type).
+
+## ✅ How Normal vs Abnormal Is Detected
+- **Normal**: The keyword is exactly one of the allowed values in `dataset.json` (google, amazon, youtube).
+- **Abnormal**: Any of the following triggers abnormal behavior:
+  - Forbidden patterns like `/`, `?`, or `..`
+  - Sensitive keywords like `admin` or `config`
+  - Any keyword not in the allowed list
+
+## ✅ How Fake Site Cloning Works
+- The backend checks the keyword and, if abnormal, selects a matching fake template:
+  - `google` → `fake_google.html`
+  - `amazon` → `fake_amazon.html`
+  - `youtube` → `fake_youtube.html`
+- Each fake page uses **local HTML/CSS + JavaScript** and does **not** connect to external services.
 
 ## ⚠️ Notes
 - This is a **rule-based** system (no AI/ML).

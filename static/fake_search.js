@@ -17,12 +17,6 @@ const FAKE_RESULTS = {
     "Notebook Pack - 6 Items",
     "USB-C Hub - 7-in-1",
   ],
-  generic: [
-    "Access Request Form",
-    "Security Check Notice",
-    "Verification in Progress",
-    "Temporary Access Denied",
-  ],
 };
 
 function handleFakeSearch(event, site) {

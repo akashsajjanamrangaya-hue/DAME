@@ -40,19 +40,24 @@ def is_input_normal(keyword: str, dataset: dict) -> tuple[bool, str]:
     if len(cleaned) > rules.get("max_length", 100):
         return False, "too long"
 
-    # Rule 2: only letters, numbers, spaces (basic sanitization)
+    # Rule 2: block forbidden patterns or characters
+    for pattern in rules.get("forbidden_patterns", []):
+        if pattern in cleaned:
+            return False, f"contains forbidden pattern: {pattern}"
+
+    # Rule 3: only letters, numbers, spaces (basic sanitization)
     if rules.get("allow_only_letters_numbers_spaces", False):
         for char in cleaned:
             if not (char.isalnum() or char.isspace()):
                 return False, "invalid characters"
 
-    # Rule 3: suspicious keywords
+    # Rule 4: suspicious keywords
     if rules.get("block_if_contains_suspicious", False):
         for bad_word in suspicious:
             if bad_word in cleaned:
                 return False, f"contains suspicious keyword: {bad_word}"
 
-    # Rule 4: not in allowed list (soft rule)
+    # Rule 5: not in allowed list (soft rule)
     if cleaned not in allowed:
         return False, "not in allowed keywords"
 
@@ -76,7 +81,7 @@ def decide_fake_template(keyword: str) -> str:
         return "fake_google.html"
     if "amazon" in cleaned:
         return "fake_amazon.html"
-    return "fake_generic.html"
+    return "fake_google.html"
 
 
 def real_site_redirect(keyword: str):
