@@ -17,16 +17,11 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 ├── logs.txt
 ├── README.md
 ├── static/
-│   ├── index.css
-│   ├── fake_google.css
-│   ├── fake_youtube.css
-│   ├── fake_amazon.css
-│   └── fake_search.js
+│   └── fake_google.css
 └── templates/
     ├── index.html
     ├── fake_google.html
-    ├── fake_amazon.html
-    └── fake_youtube.html
+    └── fake_google_results.html
 ```
 
 ## ▶️ How to Run (Step-by-Step)
@@ -51,11 +46,7 @@ This is a simple academic project that demonstrates **rule-based** detection of 
 - **app.py**: Main Flask application with rule-based logic and session handling.
 - **dataset.json**: Contains allowed keywords, suspicious keywords, and behavior rules.
 - **templates/**: HTML pages (index and fake pages with local search).
-- **static/index.css**: Modern UI theme for the main index page.
-- **static/fake_google.css**: Fake search page theme.
-- **static/fake_youtube.css**: Fake video page theme.
-- **static/fake_amazon.css**: Fake store page theme.
-- **static/fake_search.js**: Local-only search behavior for fake pages (no external redirects).
+- **static/fake_google.css**: Full styling for the gateway, fake Google home, and results pages.
 - **logs.txt**: Stores abnormal activity logs (keyword, timestamp, redirection type).
 
 ## ✅ How Normal vs Abnormal Is Detected
@@ -66,11 +57,10 @@ This is a simple academic project that demonstrates **rule-based** detection of 
   - Any keyword not in the allowed list
 
 ## ✅ How Fake Site Cloning Works
-- The backend checks the keyword and, if abnormal, selects a matching fake template:
-  - `google` → `fake_google.html`
-  - `amazon` → `fake_amazon.html`
-  - `youtube` → `fake_youtube.html`
-- Each fake page uses **local HTML/CSS + JavaScript** and does **not** connect to external services.
+- The backend checks the keyword and, if abnormal, loads the Google-like clone:
+  - `fake_google.html` for the home page
+  - `fake_google_results.html` for search results
+- All search results are generated locally with JavaScript and stay inside the fake environment.
 
 ## ⚠️ Notes
 - This is a **rule-based** system (no AI/ML).

@@ -75,12 +75,8 @@ def log_abnormal(keyword: str, redirection: str) -> None:
 def decide_fake_template(keyword: str) -> str:
     """Pick which fake page to show based on keyword."""
     cleaned = keyword.strip().lower()
-    if "youtube" in cleaned:
-        return "fake_youtube.html"
-    if "google" in cleaned:
+    if "google" in cleaned or "amazon" in cleaned or "youtube" in cleaned:
         return "fake_google.html"
-    if "amazon" in cleaned:
-        return "fake_amazon.html"
     return "fake_google.html"
 
 
@@ -102,6 +98,10 @@ def real_site_redirect(keyword: str):
 def index():
     """Main page: input a keyword and get redirected based on behavior."""
     dataset = load_dataset()
+
+    if session.get("abnormal") and request.method == "GET":
+        return render_template("fake_google.html", keyword="")
+
     if request.method == "POST":
         keyword = request.form.get("keyword", "")
 
@@ -120,10 +120,27 @@ def index():
         # Mark session as abnormal and send to fake page
         session["abnormal"] = True
         template = decide_fake_template(keyword)
-        log_abnormal(keyword, "FAKE (abnormal)")
+        log_abnormal(keyword, f"FAKE (abnormal: {reason})")
         return render_template(template, keyword=keyword)
 
     return render_template("index.html")
+
+
+@app.route("/fake/google")
+def fake_google():
+    """Serve the fake Google-like page."""
+    if not session.get("abnormal"):
+        return redirect(url_for("index"))
+    return render_template("fake_google.html", keyword="")
+
+
+@app.route("/fake/google/results")
+def fake_google_results():
+    """Serve the fake results page."""
+    if not session.get("abnormal"):
+        return redirect(url_for("index"))
+    query = request.args.get("q", "")
+    return render_template("fake_google_results.html", query=query)
 
 
 @app.route("/reset")

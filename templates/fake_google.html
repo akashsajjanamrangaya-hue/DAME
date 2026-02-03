@@ -3,21 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Searchly</title>
+  <title>Search</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='fake_google.css') }}" />
 </head>
-<body class="google-page">
-  <div class="search-page">
-    <div class="brand">Searchly</div>
-    <form class="search-form" onsubmit="return handleFakeSearch(event, 'google')">
-      <input class="search-input" id="google-search" type="text" placeholder="Search the knowledge hub" />
+<body class="google-home">
+  <div class="google-center">
+    <div class="logo-text">Search</div>
+    <form class="search-form" onsubmit="return submitFakeSearch(event)">
+      <input class="search-input" id="google-search" type="text" autocomplete="off" />
       <div class="button-row">
         <button type="submit">Search</button>
-        <button type="button" onclick="fillLucky('google-search')">I'm Feeling Lucky</button>
+        <button type="button" onclick="fillLucky()">I'm Feeling Lucky</button>
       </div>
     </form>
-    <div class="search-results" id="google-results"></div>
   </div>
-  <script src="{{ url_for('static', filename='fake_search.js') }}"></script>
+  <script>
+    function submitFakeSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById("google-search").value.trim();
+      if (!query) {
+        return false;
+      }
+      window.location.href = `/fake/google/results?q=${encodeURIComponent(query)}`;
+      return false;
+    }
+
+    function fillLucky() {
+      const input = document.getElementById("google-search");
+      input.value = "student portal";
+      input.focus();
+    }
+  </script>
 </body>
 </html>

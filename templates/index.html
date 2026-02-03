@@ -3,33 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Behavior-Based Cyber Deception System</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+  <title>Cyber Deception Gateway</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fake_google.css') }}" />
 </head>
-<body>
-  <div class="container">
-    <h1>Behavior-Based Cyber Deception System</h1>
-    <p class="subtitle">Enter a website keyword to simulate behavior-based redirection.</p>
+<body class="gateway-page">
+  <div class="gateway-card">
+    <h1>Cyber Deception Gateway</h1>
+    <p class="subtitle">Enter a website keyword to continue.</p>
 
-    <form method="POST" class="card">
-      <label for="keyword">Website Keyword:</label>
-      <input type="text" id="keyword" name="keyword" placeholder="e.g., google" required />
-      <button type="submit">Check &amp; Redirect</button>
+    <form method="POST" class="gateway-form">
+      <label for="keyword">Keyword</label>
+      <input type="text" id="keyword" name="keyword" placeholder="google / amazon / youtube" required />
+      <button type="submit">Continue</button>
     </form>
-
-    <div class="info">
-      <h3>Try these normal keywords:</h3>
-      <ul>
-        <li>google</li>
-        <li>youtube</li>
-        <li>amazon</li>
-        <li>wikipedia</li>
-        <li>github</li>
-        <li>stackoverflow</li>
-      </ul>
-      <p class="hint">Tip: enter suspicious words like <strong>hack</strong> or <strong>phish</strong> to see deception pages.</p>
-      <p class="hint">Use <a href="/reset">reset</a> to clear the session.</p>
-    </div>
   </div>
 </body>
 </html>

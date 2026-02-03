@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='fake_google.css') }}" />
+</head>
+<body class="google-results">
+  <header class="results-header">
+    <div class="logo-text small">Search</div>
+    <form class="search-form inline" onsubmit="return submitFakeSearch(event)">
+      <input class="search-input" id="google-search" type="text" value="{{ query }}" autocomplete="off" />
+    </form>
+  </header>
+
+  <main class="results-container" id="results-container"></main>
+
+  <script>
+    function submitFakeSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById("google-search").value.trim();
+      if (!query) {
+        return false;
+      }
+      window.location.href = `/fake/google/results?q=${encodeURIComponent(query)}`;
+      return false;
+    }
+
+    function buildResults(query) {
+      const base = query.replace(/\\s+/g, " ").trim();
+      const titles = [
+        `${base} - Official Resource`,
+        `${base} | Student Portal`,
+        `${base} Documentation Hub`,
+        `How to access ${base}`,
+        `${base} - Community Guide`
+      ];
+
+      return titles.map((title, index) => ({
+        title,
+        url: `https://www.${base.replace(/\\s+/g, "").toLowerCase()}.example/${index + 1}`,
+        desc: `Find verified information about ${base}. Updated guides, links, and helpful references.`
+      }));
+    }
+
+    function renderResults(query) {
+      const results = buildResults(query);
+      const container = document.getElementById("results-container");
+      container.innerHTML = results.map((item) => `
+        <div class="result-item">
+          <a class="result-title" href="/fake/google/results?q=${encodeURIComponent(item.title)}">
+            ${item.title}
+          </a>
+          <div class="result-url">${item.url}</div>
+          <div class="result-desc">${item.desc}</div>
+        </div>
+      `).join("");
+    }
+
+    renderResults("{{ query }}");
+  </script>
+</body>
+</html>
